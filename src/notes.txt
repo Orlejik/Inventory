@@ -1,0 +1,64 @@
+================================================== GUI =======================================================================================
+1. user start the shortcut:
+    1.1 Users should set number of operator and name
+    1.2 User Press the OK button
+    1.3 the name and operator number are visible in the corner of GUI
+    1.4 the name and operator number is included in table
+    1.5 System count the number of elements scanned per username and operator code
+2. Soft works:
+    2.1 User should select plant (Plant remains during all the saning)
+    2.2 User should choose location, where the items located (location need to be chosen every time)
+    2.3 User Should choose the type of item(PC, monitor, printer.....) (to be changed when it will need)
+    2.4 User should scan the SIS number (Each item should have sis number) (sis number need to be entered every time)
+    2.5 User should scan FAE Number (Not all the items have FAE number. Only Monitors, PCs, Printers))
+    2.6 User should include Brand of item
+    2.7 User Should include Model of item
+    2.8 User should enter the Serial Number (SN is unique and need to be entered every time of scanning)
+    2.9 User need to enter the hostname and IP of PC (if location is Warehouse, the input IP is inactive. Only PCs have IP and Hostname, for other items these inputs are disabled)
+    2.10 User should put the comment is this item broken or not
+    2.11 After all the inputs are filled, user has to press the RECORD button for make the record in DB
+3. In case of:
+    3.1 User try to enter same serial number - receive the error about duplicates, message with record made from DB
+    3.2 User try to enter same FAE Number - receive the error about duplicates, message with record made from DB
+    3.3 User forget to specify any data in the input - receive the error message with alert of empty input
+    3.4 User don't chose username or Operator Number - the OK button remains inactive
+4. GUI should work on PDA, PCs, Laptops
+================================================== GUI =======================================================================================
+
+
+=================================================== DB =======================================================================================
+DataBases Created :
+
+1. inventory_it_assets (DB for inventoried assets):
+
+     the table is:
+        ID	            Plant	        FAE Number	    SIS Number	    Item	            Brand	        Model	    Serial Number	 Location	     Hostname	        IP	        IsDamaged   Date and Time	IT userName	   OperatorNumber	Primary_key(id)
+        in t 	        VARCHAR(255)	VARCHAR(255)	VARCHAR(255)	VARCHAR(255)	VARCHAR(255)	VARCHAR(255)	VARCHAR(255)	VARCHAR(255)	VARCHAR(255)	VARCHAR(255)	BOOLEAN	     Varchar(255)	 Varchar(255)    Varchar(255)
+        AUTO_INCREMENT		                UNIQUE					                                                        UNIQUE
+
+
+2. People_in_inventory (DB of people who make the inventory):
+
+    The Table is:
+        ID                  IT userName	    OperatorNumber	    Primary_key(id)
+        in t 	            Varchar(255)	Varchar(255)
+        AUTO_INCREMENT
+
+3. DB Items_of_assets
+    ID	                Item Name	        Brand	        Primary_key(id)	Primary_key(id)
+    in t 	            Varchar(255)	    Varchar(255)
+    AUTO_INCREMENT
+
+4. DB location_of_items
+    ID	                Location	    Primary_key(id)
+    in t 	            Varchar(255)
+    AUTO_INCREMENT
+
+
+5. DB Plants
+    ID	                 Plant	        Primary_key(id)
+    in t 	             Varchar(255)
+    AUTO_INCREMENT
+
+
+=================================================== DB =======================================================================================
