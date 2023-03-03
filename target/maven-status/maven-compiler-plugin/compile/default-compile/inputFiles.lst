@@ -1,10 +1,10 @@
-C:\Users\strigoy\Desktop\AthenticationDemo\AuthenticationDemo\src\main\java\com\boots\repository\RoleRepository.java
-C:\Users\strigoy\Desktop\AthenticationDemo\AuthenticationDemo\src\main\java\com\boots\controller\AdminController.java
-C:\Users\strigoy\Desktop\AthenticationDemo\AuthenticationDemo\src\main\java\com\boots\config\WebSecurityConfig.java
-C:\Users\strigoy\Desktop\AthenticationDemo\AuthenticationDemo\src\main\java\com\boots\config\MvcConfig.java
-C:\Users\strigoy\Desktop\AthenticationDemo\AuthenticationDemo\src\main\java\com\boots\entity\Role.java
-C:\Users\strigoy\Desktop\AthenticationDemo\AuthenticationDemo\src\main\java\com\boots\repository\UserRepository.java
-C:\Users\strigoy\Desktop\AthenticationDemo\AuthenticationDemo\src\main\java\com\boots\service\UserService.java
-C:\Users\strigoy\Desktop\AthenticationDemo\AuthenticationDemo\src\main\java\com\boots\entity\User.java
-C:\Users\strigoy\Desktop\AthenticationDemo\AuthenticationDemo\src\main\java\com\boots\controller\RegistrationController.java
-C:\Users\strigoy\Desktop\AthenticationDemo\AuthenticationDemo\src\main\java\com\boots\service\SecurityService.java
+C:\Users\artiom.oriol\Desktop\Eclipse Projects\Inventory\src\main\java\com\boots\entity\Role.java
+C:\Users\artiom.oriol\Desktop\Eclipse Projects\Inventory\src\main\java\com\boots\config\WebSecurityConfig.java
+C:\Users\artiom.oriol\Desktop\Eclipse Projects\Inventory\src\main\java\com\boots\controller\AdminController.java
+C:\Users\artiom.oriol\Desktop\Eclipse Projects\Inventory\src\main\java\com\boots\repository\RoleRepository.java
+C:\Users\artiom.oriol\Desktop\Eclipse Projects\Inventory\src\main\java\com\boots\service\SecurityService.java
+C:\Users\artiom.oriol\Desktop\Eclipse Projects\Inventory\src\main\java\com\boots\controller\RegistrationController.java
+C:\Users\artiom.oriol\Desktop\Eclipse Projects\Inventory\src\main\java\com\boots\entity\User.java
+C:\Users\artiom.oriol\Desktop\Eclipse Projects\Inventory\src\main\java\com\boots\service\UserService.java
+C:\Users\artiom.oriol\Desktop\Eclipse Projects\Inventory\src\main\java\com\boots\config\MvcConfig.java
+C:\Users\artiom.oriol\Desktop\Eclipse Projects\Inventory\src\main\java\com\boots\repository\UserRepository.java
