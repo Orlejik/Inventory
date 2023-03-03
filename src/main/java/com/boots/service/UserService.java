@@ -9,12 +9,15 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class UserService implements UserDetailsService {
     @PersistenceContext
     private EntityManager em;
@@ -25,28 +28,30 @@ public class UserService implements UserDetailsService {
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
-        if(user == null){
-            throw new UsernameNotFoundException("User not find");
+
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found");
         }
+
         return user;
     }
 
-    public User findUserById(Long userId){
-        Optional<User> userFromDB = userRepository.findAllById(userId);
-        return userFromDB.orElse(new User());
+    public User findUserById(Long userId) {
+        Optional<User> userFromDb = userRepository.findById(userId);
+        return userFromDb.orElse(new User());
     }
 
-    public List<User> allUser(){
+    public List<User> allUsers() {
         return userRepository.findAll();
     }
 
-    public boolean saveUser(User user){
+    public boolean saveUser(User user) {
         User userFromDB = userRepository.findByUsername(user.getUsername());
-        if(userFromDB != null){
+
+        if (userFromDB != null) {
             return false;
         }
 
@@ -56,16 +61,16 @@ public class UserService implements UserDetailsService {
         return true;
     }
 
-    public boolean deleteUser(Long userId){
-        if(userRepository.findAllById(userId).isPresent()){
+    public boolean deleteUser(Long userId) {
+        if (userRepository.findById(userId).isPresent()) {
             userRepository.deleteById(userId);
             return true;
         }
         return false;
     }
 
-    public List<User> usergtList(Long idMin){
-        return em.createQuery("select user from User where userid=paramId" , User.class).setParameter("paramId", idMin).getResultList();
-
+    public List<User> usergtList(Long idMin) {
+        return em.createQuery("SELECT u FROM User u WHERE u.id > :paramId", User.class)
+                .setParameter("paramId", idMin).getResultList();
     }
 }
