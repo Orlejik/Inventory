@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/mdb.dark.min.css">
+    <link rel="stylesheet" href="./css/mdb.dark.rtl.min.css">
+    <link rel="stylesheet" href="./css/mdb.min.css">
+    <link rel="stylesheet" href="./css/mdb.rtl.min.css">
+    <link rel="stylesheet" href="./css/all.min.css">
+    <title>Title</title>
+</head>
+<body class="bg-secondary">
+
+<nav class="navbar navbar-dark bg-primary">
+
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+        <!-- Toggle button -->
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-mdb-toggle="collapse"
+                data-mdb-target="#navbarLeftAlignExample"
+                aria-controls="navbarLeftAlignExample"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarLeftAlignExample">
+            <!-- Left links -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">
+                        <img src="./images/FujiInv.png" alt="Fuji Logo" />
+                    </a>
+                </li>
+<!--                <li class="nav-item">-->
+<!--                    <a class="nav-link" href="/">All Items</a>-->
+<!--                </li>-->
+                <!-- Navbar dropdown -->
+                <li class="nav-item dropdown">
+                    <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            id="navbarDropdown"
+                            role="button"
+                            data-mdb-toggle="dropdown"
+                            aria-expanded="false"
+                    >
+                        Dropdown
+                    </a>
+                    <!-- Dropdown menu -->
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li>
+                            <a class="dropdown-item" href="/additem">Add Item</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="/assets-add">Add Asset</a>
+                        </li>
+<!--                        <li><hr class="dropdown-divider" /></li>-->
+                        <li>
+                            <a class="dropdown-item" href="/admin/user-add">Add new User</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled"
+                    >Disabled</a
+                    >
+                </li>
+            </ul>
+            <!-- Left links -->
+        </div>
+        <!-- Collapsible wrapper -->
+    </div>
+    <!-- Container wrapper -->
+</nav>
+
+<script src="javascript/all.min.js"></script>
+<script src="./javascript/main.js"></script>
+
+</body>
+</html>
