@@ -54,19 +54,13 @@ public class InvItem {
     @ManyToMany(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
     private List<Image> image;
 
-    @JoinTable(
-            name = "items_movements_logs",
-            joinColumns = @JoinColumn(
-                    name = "item_id",
-                    referencedColumnName = "id"
-            ),
-            inverseJoinColumns = @JoinColumn(
-                    name = "log_id",
-                    referencedColumnName = "log_id"
-            )
-    )
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Logs> logs;
+
+   public void addLogToInvItem(Logs log){
+       log.setItem(this);
+       logs.add(log);
+   }
 
     @PrePersist
     public void init(){

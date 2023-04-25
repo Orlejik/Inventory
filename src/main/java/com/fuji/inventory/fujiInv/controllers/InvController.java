@@ -31,7 +31,7 @@ public class InvController {
     @GetMapping("/item/{id}")
     public String itemInfo(@PathVariable Long id, Model model){
         InvItem item = itemService.getItemById(id);
-        List<Logs> logs = logRepository.findAllByItem_Id(id);
+        List<Logs> logs = itemService.getLogsByItem_Id(id);
         List<Image> images = itemService.getImagesByItemName_Assettype(item.getItem_model());
         model.addAttribute("item", item);
         model.addAttribute("images", images);
@@ -46,7 +46,13 @@ public class InvController {
     }
     @PostMapping("/item/create")
     public String createItem(InvItem invItem, Principal principal, Logs logs){
-        itemService.saveItem(invItem, principal, logs);
+        logs.setLogText(
+                principal.getName()+" added item " +invItem.getItem_brand()
+                +" "+invItem.getItem_model() + " in " +invItem.getPlant() +
+                " placed on " + invItem.getLocation()
+        );
+
+        itemService.saveItem(invItem, logs, principal);
         return "redirect:/additem";
     }
 
@@ -61,8 +67,8 @@ public class InvController {
         item.setUser_name(invItem.getUser_name());
         item.setDepartment(invItem.getDepartment());
         item.setOperator_number(invItem.getOperator_number());
-        itemService.saveUpdatedItem(item, principal, logs);
         log.info("item with id {} saved in DB", item.getId());
+        itemService.saveUpdatedItem(item, logs, principal);
         return "redirect:/item/{id}";
     }
 }

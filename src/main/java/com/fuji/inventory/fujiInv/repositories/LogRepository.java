@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface LogRepository extends JpaRepository<Logs, Long> {
-    public List<Logs> findAllByItem_Id(Long id);
+    List<Logs> getLogsByItem_Id(Long id);
 }

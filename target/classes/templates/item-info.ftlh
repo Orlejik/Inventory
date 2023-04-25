@@ -210,6 +210,7 @@
             <thead class="table-dark">
             <tr>
                 <th scope="col">№</th>
+                <th scope="col">Time</th>
                 <th scope="col">Description</th>
             </tr>
             </thead>
@@ -217,7 +218,8 @@
             <#list logs as log>
                 <tr class="table-dark">
                     <th scope="row"><#assign numberOfLogs = numberOfLogs +1> ${numberOfLogs}</th>
-                    <td>${log}</td>
+                    <th>${log.logTime}</th>
+                    <th>${log.logText}</th>
                 </tr>
             </#list>
             </tbody>

@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.List;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 @Data
@@ -20,15 +20,16 @@ public class Logs {
     @Column(name = "log_id")
     private Long id;
     @Column(name = "log_date_time")
-    private LocalDateTime logTime;
+    private String logTime;
     @Column(name = "log text", length = 1000)
     private String logText;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private InvItem item;
 
     @PrePersist
     private void init() {
-        logTime = LocalDateTime.now();
-    }
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        logTime = LocalDateTime.now().format(formatter);
+            }
 }

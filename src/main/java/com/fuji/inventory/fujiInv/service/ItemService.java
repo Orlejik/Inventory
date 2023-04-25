@@ -32,15 +32,19 @@ public class ItemService {
         return imageRepository.getImagesByItemName_AssetModel(itemtype);
     }
 
-    public void saveItem(InvItem invItem, Principal principal, Logs logs) {
+    public List<Logs> getLogsByItem_Id(Long id){
+        return logRepository.getLogsByItem_Id(id);
+    }
+
+    public void saveItem(InvItem invItem, Logs logs, Principal principal) {
+        logs.setLogText(
+                principal.getName()+" addded item " +invItem.getItem_brand()
+                        +" "+invItem.getItem_model() + " in " +invItem.getPlant() +
+                        " placed on " + invItem.getLocation()
+        );
+        invItem.addLogToInvItem(logs);
         invItem.setUser_added_item(principal.getName());
-        String logText = principal.getName()+" added item " +invItem.getItem_brand()
-                +" "+invItem.getItem_model() + " in " +invItem.getPlant() +
-                " placed on " + invItem.getLocation();
-        log.info("Item Item.Title {} {} added to DB", invItem.getItem_brand(), invItem.getItem_model());
-        logs.setLogText(logText);
         invRepository.save(invItem);
-        logRepository.save(logs);
     }
 
 //    UPDATE RECORD IN DATABASE
@@ -55,16 +59,21 @@ public class ItemService {
         return invItem;
     }
 
-    public void saveUpdatedItem(InvItem invItem, Principal principal, Logs logs) {
-        log.info("Item with id {} updated", invItem.getId());
-        String logText = principal.getName() + "updated " +invItem.getItem_brand()
-                +" "+invItem.getItem_model() + " in " +invItem.getPlant() +
-                " placed on " + invItem.getLocation();
-        logs.setLogText(logText);
-        invRepository.save(invItem);
 
-        logRepository.save(logs);
+
+    public void saveUpdatedItem(InvItem invItem, Logs logs, Principal principal) {
+        logs.setLogText(
+                principal.getName()+" updated item " +invItem.getItem_brand()
+                        +" "+invItem.getItem_model() + " in " +invItem.getPlant() +
+                        " placed on " + invItem.getLocation()
+        );
+        invItem.addLogToInvItem(logs);
+        log.info("Item with id {} updated", invItem.getId());
+        invRepository.save(invItem);
     }
+
+
+
 
     public InvItem getItemById(Long id) {
         return invRepository.findById(id).orElse(null);
